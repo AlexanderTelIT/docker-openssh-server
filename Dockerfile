@@ -42,7 +42,7 @@ RUN chmod -R 7777 /config/
 RUN chmod -R 7777 /etc/
 
 ARG USERNAME=linuxserver.io
-ARG USER_UID=1000
+ARG USER_UID=1001
 ARG USER_GID=$USER_UID
 
 # Create the user
