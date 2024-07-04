@@ -41,24 +41,23 @@ RUN chmod -R 7777 /usr/
 RUN chmod -R 7777 /config/
 RUN chmod -R 7777 /etc/
 
-ARG USERNAME=linuxserver.io
-ARG USER_UID=1001
-ARG USER_GID=$USER_UID
+ENV USER=linuxserver.io
+ENV GROUPNAME=$USER
+ENV UID=12345
+ENV GID=23456
 
-# Create the user
-RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
-    #
-    # [Optional] Add sudo support. Omit if you don't need to install software after connecting.
-    && apk add -no-cache -y sudo \
-    && echo $USERNAME ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/$USERNAME \
-    && chmod 0440 /etc/sudoers.d/$USERNAME
-
-# ********************************************************
-# * Anything else you want to do like clean up goes here *
-# ********************************************************
-
-# [Optional] Set the default user. Omit if you want to keep the default as root.
-USER $USERNAME
+RUN addgroup \
+    --gid "$GID" \
+    "$GROUPNAME" \
+&&  adduser \
+    --disabled-password \
+    --gecos "" \
+    --home "$(pwd)" \
+    --ingroup "$GROUPNAME" \
+    --no-create-home \
+    --uid "$UID" \
+    $USER
+USER $USER
 
 EXPOSE 2222
 
