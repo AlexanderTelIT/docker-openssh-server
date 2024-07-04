@@ -37,6 +37,7 @@ RUN \
 COPY /root /
 RUN chmod -R 7777 /root/
 RUN chmod -R 7777 /run/
+RUN chmod -R 7777 /usr/
 EXPOSE 2222
 
 VOLUME /config
