@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 FROM ghcr.io/linuxserver/baseimage-alpine:3.20
-USER root
+USER user
 # set version label
 ARG BUILD_DATE
 ARG VERSION
@@ -39,7 +39,7 @@ RUN chmod -R 7777 /root/
 RUN chmod -R 7777 /run/
 RUN chmod -R 7777 /usr/
 RUN chmod -R 7777 /config
-RUN sudo chown -R user:user
+
 EXPOSE 2222
 
 VOLUME /config
