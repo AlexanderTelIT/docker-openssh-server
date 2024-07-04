@@ -42,22 +42,16 @@ RUN chmod -R 7777 /config/
 RUN chmod -R 7777 /etc/
 
 ENV USER=linuxserver.io
-ENV GROUPNAME=$USER
-ENV UID=12345
-ENV GID=23456
+ENV HOME /home/$USER
 
-RUN addgroup \
-    --gid "$GID" \
-    "$GROUPNAME" \
-&&  adduser \
-    --disabled-password \
-    --gecos "" \
-    --home "$(pwd)" \
-    --ingroup "$GROUPNAME" \
-    --no-create-home \
-    --uid "$UID" \
-    $USER
-USER $USER
+# install sudo as root
+RUN apk add --update sudo
+
+# add new user
+RUN adduser -D $USER \
+        && echo "$USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$USER \
+        && chmod 0440 /etc/sudoers.d/$USER
+
 
 EXPOSE 2222
 
