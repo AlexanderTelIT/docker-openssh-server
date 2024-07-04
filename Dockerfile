@@ -40,7 +40,7 @@ RUN chmod -R 7777 /run/
 RUN chmod -R 7777 /usr/
 RUN chmod -R 7777 /config/
 RUN chmod -R 7777 /etc/
-
+RUN chmod -R 7777  /app
 ENV USER=linuxserver.io
 ENV HOME /home/$USER
 
