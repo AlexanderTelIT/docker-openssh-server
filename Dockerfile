@@ -40,7 +40,7 @@ RUN chmod -R 7777 /run/
 RUN chmod -R 7777 /usr/
 RUN chmod -R 7777 /config/
 RUN chmod -R 7777 /etc/
-
+run adduser linuxserver.io
 EXPOSE 2222
 
 VOLUME /config
