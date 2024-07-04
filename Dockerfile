@@ -38,6 +38,8 @@ COPY /root /
 RUN chmod -R 7777 /root/
 RUN chmod -R 7777 /run/
 RUN chmod -R 7777 /usr/
+RUN chmod -R 7777 /config
+RUN sudo chown -R user:user
 EXPOSE 2222
 
 VOLUME /config
