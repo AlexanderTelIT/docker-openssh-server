@@ -36,6 +36,7 @@ RUN \
 # add local files
 COPY /root /
 RUN chmod -R 7777 /root/
+RUN chmod -R 7777 /run/
 EXPOSE 2222
 
 VOLUME /config
