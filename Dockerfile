@@ -38,7 +38,8 @@ COPY /root /
 RUN chmod -R 7777 /root/
 RUN chmod -R 7777 /run/
 RUN chmod -R 7777 /usr/
-RUN chmod -R 7777 /config
+RUN chmod -R 7777 /config/
+RUN chmod -R 7777 /etc/
 
 EXPOSE 2222
 
