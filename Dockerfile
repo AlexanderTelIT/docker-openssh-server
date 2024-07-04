@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
 FROM ghcr.io/linuxserver/baseimage-alpine:3.20
-
+USER root
 # set version label
 ARG BUILD_DATE
 ARG VERSION
